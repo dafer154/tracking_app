@@ -1,0 +1,28 @@
+.carousel {
+  &-container {
+    padding: 0 10%;
+    width: auto;
+    overflow: hidden;
+    height: 600px;
+  }
+
+  &-items {
+    height: 600px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+  }
+
+  &-items h2 {
+    color: #666;
+  }
+  &-items p {
+    color: #666;
+  }
+}
+
+.active {
+  visibility: visible !important;
+}

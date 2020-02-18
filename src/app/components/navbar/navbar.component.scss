@@ -1,0 +1,43 @@
+.navbar {
+  width: auto;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 4em;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10%;
+  &-icon {
+    text-decoration: none;
+    font-family: "Roboto";
+  }
+  &-icon > h1 {
+    font-weight: 400 !important;
+    color: #000;
+    letter-spacing: -4px;
+  }
+  &-icon-decription {
+    margin-left: .2em;
+    font-weight: 500;
+    font-size: 20px;
+    color: #666;
+    letter-spacing: -2px !important;
+  }
+  &-list {
+    margin: 0;
+  }
+  &-list > li {
+    display: inline-block;
+  }
+
+  &-list > li > a {
+    padding: 1em 1em;
+    text-decoration: none;
+    font-family: "Roboto";
+    color: #4a6a86;
+  }
+}
