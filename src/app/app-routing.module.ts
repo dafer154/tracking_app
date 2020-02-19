@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { PlatformComponent } from './components/platform/platform.component';
 
 
 const routes: Routes = [
@@ -9,9 +10,13 @@ const routes: Routes = [
     component: LandingPageComponent,
   },
   {
+    path: 'platform',
+    component: PlatformComponent,
+  },
+  {
     path: '*',
     redirectTo: '/home'
-  }, 
+  },
   {
     path: '**',
     redirectTo: '/home'

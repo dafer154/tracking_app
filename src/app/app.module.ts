@@ -12,6 +12,10 @@ import { MerchandiseComponent } from './components/merchandise/merchandise.compo
 import { MainBannerComponent } from './components/main-banner/main-banner.component';
 import { SelectTransportComponent } from 'src/app/components/select-transport/select-transport.component';
 import { CarouselSliderComponent } from 'src/app/components/carousel-slider/carousel-slider.component';
+import { PlatformComponent } from './components/platform/platform.component';
+import { LocalstorageService } from 'src/app/services/localstorage.service';
+import { SidebarServiceComponent } from './components/sidebar-service/sidebar-service.component';
+import { SelectVehicleComponent } from './components/select-vehicle/select-vehicle.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,10 @@ import { CarouselSliderComponent } from 'src/app/components/carousel-slider/caro
     MerchandiseComponent,
     MainBannerComponent,
     SelectTransportComponent,
-    CarouselSliderComponent
+    CarouselSliderComponent,
+    PlatformComponent,
+    SidebarServiceComponent,
+    SelectVehicleComponent
 
   ],
   imports: [
@@ -31,7 +38,7 @@ import { CarouselSliderComponent } from 'src/app/components/carousel-slider/caro
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [LocalstorageService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

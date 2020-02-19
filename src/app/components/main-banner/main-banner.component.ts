@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import {LocalstorageService } from 'src/app/services/localstorage.service';
 
 @Component({
   selector: 'app-main-banner',
@@ -9,10 +11,15 @@ export class MainBannerComponent implements OnInit {
 
   public task: String;
 
-  constructor() { }
+  constructor(public router: Router, private $localStorage: LocalstorageService) { }
 
   ngOnInit(): void {
     this.task = 'Distribuir';
+  }
+
+  goToPlatform(): void {
+    this.$localStorage.setStatePlatform(true);
+    this.router.navigate(['/platform']);
   }
 
 }

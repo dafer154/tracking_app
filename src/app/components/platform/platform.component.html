@@ -1,0 +1,8 @@
+<app-navbar></app-navbar>
+<div class="platform-main">
+    <div class="platform-progress-bar">
+        <span class="platform-progress"></span>
+    </div>
+    <app-select-vehicle (data)="vehicleData($event)"></app-select-vehicle>
+</div>
+<app-sidebar-service [data]="data"></app-sidebar-service>

@@ -1,4 +1,4 @@
-<div class="navbar">
+<div class="navbar" [hidden]="$localStorage.getStatePlatform()">
     <a href="#" class="navbar-icon">
         <h1>
             TRACKING <span class="navbar-icon-decription">app</span>
@@ -14,4 +14,20 @@
         <li><a href="#">Contacto</a></li>
     </ul>
 
+</div>
+
+<div class="navbar-platform" *ngIf="$localStorage.getStatePlatform()">
+    <a href="#" class="navbar-icon">
+        <h1>
+            TRACKING <span class="navbar-icon-decription">app</span>
+        </h1>
+    </a>
+    <div class="navbar-list-platform">
+        <button type="button" class="navbar-button-platform">
+            Registrarme
+        </button>
+        <button type="button" class="navbar-button-platform-two">
+            Inicia Sesión
+        </button>
+    </div>
 </div>
