@@ -13,11 +13,11 @@
             <div class="summary-row"><i class="fal fa-weight-hanging summary-row-icon"></i><span
                     class="summary-row-key">Peso:</span><span class="summary-row-value">{{data.weight}}</span></div>
             <div class="summary-row"><i class="fal fa-arrows-alt-v summary-row-icon"></i><span
-                    class="summary-row-key">Alto:</span><span class="summary-row-value"></span></div>
+                    class="summary-row-key">Alto:</span><span class="summary-row-value"></span>{{data.height ? data.height + ' m³' : ''}}</div>
             <div class="summary-row"><i class="fal fa-arrows-alt-h summary-row-icon"></i><span
-                    class="summary-row-key">Ancho:</span><span class="summary-row-value"></span></div>
+                    class="summary-row-key">Ancho:</span><span class="summary-row-value"></span>{{data.width ? data.width + ' m³' : ''}}</div>
             <div class="summary-row"><i class="fal fa-exchange-alt summary-row-icon"></i><span
-                    class="summary-row-key">Largo:</span><span class="summary-row-value"></span></div>
+                    class="summary-row-key">Largo:</span><span class="summary-row-value"></span>{{data.long ? data.long + ' m³' : ''}}</div>
             <div class="summary-row expandable false"><i class="fal fa-map-marked-alt summary-row-icon"></i><span
                     class="summary-row-key">Direcciones:</span><span class="summary-row-value">0</span>
                 <div class="summary-row-subitems">
