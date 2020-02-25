@@ -53,23 +53,26 @@
                             <div class="d-flex input-group text-left mt-4">
                                 <div class="p-2 mx-2 mr-3"><i class="fal fa-arrows-alt-v text-muted"></i></div><input
                                     type="number" id="height" min="1" step="any" name="height"
-                                    class="form-control delete-input-arrow" placeholder="Alto" required="" value="" formControlName="height">
+                                    class="form-control delete-input-arrow" placeholder="Alto" required="" value=""
+                                    formControlName="height">
                                 <div class="input-group-append"><span class="input-group-text">m³</span></div>
                             </div>
                             <div class="d-flex input-group text-left mt-4">
                                 <div class="p-2 mx-2"><i class="fal fa-arrows-alt-h text-muted"></i></div><input
                                     type="number" id="width" min="1" step="any" name="width"
-                                    class="form-control delete-input-arrow" placeholder="Ancho" required="" value="" formControlName="width">
+                                    class="form-control delete-input-arrow" placeholder="Ancho" required="" value=""
+                                    formControlName="width">
                                 <div class="input-group-append"><span class="input-group-text">m³</span></div>
                             </div>
                             <div class="d-flex input-group text-left mt-4">
                                 <div class="p-2 mx-2"><i class="fal fa-exchange-alt text-muted"></i></div><input
                                     type="number" id="length" min="1" step="any" name="length"
-                                    class="form-control delete-input-arrow" placeholder="Largo" required="" value="" formControlName="long">
+                                    class="form-control delete-input-arrow" placeholder="Largo" required="" value=""
+                                    formControlName="long">
                                 <div class="input-group-append"><span class="input-group-text">m³</span></div>
                             </div>
                             <hr>
-                            <div class="d-flex justify-content-center mt-3"><button type="submit"
+                            <div class="d-flex justify-content-center mt-3"><button type="button"
                                     class="btn btn-primary py-2 px-5" (click)="selectSteps(3)">CONTINUAR</button></div>
                         </form>
                     </div>
@@ -95,6 +98,9 @@
                                     class="app-addresstask-address" placeholder="Seleccionar Dirección" readonly=""
                                     value=""><select id="0" class="app-addresstask-task" disabled="">
                                     <option value="" disabled="">Seleccione tipo de tarea</option>
+                                    <option value="" disabled="" selected>Tipo de tarea: Cargue</option>
+                                    <option value="" disabled="">Tipo de tarea: Descargue</option>
+                                    <option value="" disabled="">Tipo de tarea: Mixto</option>
                                 </select>
                             </div>
                             <div class="app-addresstask">
@@ -104,6 +110,9 @@
                                     class="app-addresstask-address" placeholder="Seleccionar Dirección" readonly=""
                                     value=""><select id="1" class="app-addresstask-task" disabled="">
                                     <option value="" disabled="">Seleccione tipo de tarea</option>
+                                    <option value="" disabled="">Tipo de tarea: Cargue</option>
+                                    <option value="" disabled="" selected>Tipo de tarea: Descargue</option>
+                                    <option value="" disabled="">Tipo de tarea: Mixto</option>
                                 </select>
                             </div>
                             <div class="text-right"><button class="btn btn-outline-primary  btn-sm px-4 m-2"
@@ -189,7 +198,7 @@
             </div>
         </div>
     </div>
-    <div class="slide app-scrollbars pt-4 false" *ngIf="steps == 7">
+    <div class="slide app-scrollbars pt-4 false" *ngIf="steps == 7 || steps == 8 && !$authService.isLogged()">
         <div class="slide-box">
             <div class="container">
                 <div class="row justify-content-center">
@@ -229,7 +238,7 @@
             </div>
         </div>
     </div>
-    <div class="slide app-scrollbars" *ngIf="steps == 8">
+    <div class="slide app-scrollbars" *ngIf="steps == 8 && $authService.isLogged()">
         <div class="slide-box">
             <div class="container">
                 <div class="row justify-content-center">
@@ -238,14 +247,14 @@
                         <p class="text-success">¡Muy bien, la solicitud ha sido enviada con éxito!</p>
                         <p class="text-info">¡Gracias por confiar tu logística en Quick!</p><i
                             class="quickapp-slide-separator"></i>
-                        <p class="text-muted">¿Qué deseas hacer ahora?</p><br><a href="#"
-                            class="btn btn-primary cursor-pointer w-100">SOLICITAR OTRO SERVICIO</a><br><button
+                        <p class="text-muted">¿Qué deseas hacer ahora?</p><br><a (click)="requestNewService()"
+                            class="btn btn-primary cursor-pointer w-100 text-white">SOLICITAR OTRO SERVICIO</a><br><button
                             type="button" class="btn btn-primary mb-3 mt-3 w-100 d-none">COMPARTIR ESTA APP</button><br>
                         <div class="row mx-auto text-center">
-                            <div class="col-12 col-sm-6 pl-0 pr-1"><a href="#"
+                            <div class="col-12 col-sm-6 pl-0 pr-1"><a routerLink="/dashboard/main"
                                     class="btn btn-primary cursor-pointer w-100 mb-3 mb-sm-0">IR A MI CUENTA</a></div>
-                            <div class="col-12 col-sm-6 pl-1 pr-0"><a href="#"
-                                    class="btn btn-outline-primary w-100 px-5">SALIR</a></div>
+                            <div class="col-12 col-sm-6 pl-1 pr-0"><button type="button"
+                                    class="btn btn-outline-primary w-100 px-5" (click)="logOut()">SALIR</button></div>
                         </div>
                     </div>
                 </div>

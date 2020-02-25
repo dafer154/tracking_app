@@ -1,10 +1,10 @@
-<div class="navbar" [hidden]="$localStorage.getStatePlatform()">
-    <a href="#" class="navbar-icon">
+<div class="navbar-app" [hidden]="$localStorage.getStatePlatform()">
+    <a href="#" class="navbar-app-icon">
         <h1>
-            TRACKING <span class="navbar-icon-decription">app</span>
+            TRACKING <span class="navbar-app-icon-decription">app</span>
         </h1>
     </a>
-    <ul class="navbar-list">
+    <ul class="navbar-app-list">
         <li><a href="#">Inicio</a></li>
         <li><a href="#">Quienes somos</a></li>
         <li><a href="#">Cargo</a></li>
@@ -16,18 +16,42 @@
 
 </div>
 
-<div class="navbar-platform" *ngIf="$localStorage.getStatePlatform()">
-    <a href="#" class="navbar-icon">
-        <h1>
-            TRACKING <span class="navbar-icon-decription">app</span>
-        </h1>
-    </a>
-    <div class="navbar-list-platform">
-        <button type="button" class="navbar-button-platform">
-            Registrarme
-        </button>
-        <button type="button" class="navbar-button-platform-two">
-            Inicia Sesión
-        </button>
+<div class="navbar-app-platform" *ngIf="$localStorage.getStatePlatform()">
+    <div class="navbar-app-platform-wrap">
+        <button class="btn-effect btn-prev-step navbar-app-prev-step" *ngIf="statusButton > 1" (click)="backStep()"><i
+                class="fal fa-arrow-left" type="button"></i></button>
+        <a href="#" class="navbar-app-icon">
+            <h1>
+                TRACKING <span class="navbar-app-icon-decription">app</span>
+            </h1>
+        </a>
+        <nav class="navbar-app-list-platform">
+            <ul>
+                <li [hidden]="$authService.isLogged()"><button type="button" routerLink="/signup"
+                        class="btn btn-sm px-3 btn-primary app-notification-btn mr-md-3 mx-auto mb-3 mb-md-0">Registrarme</button>
+                </li>
+                <li [hidden]="$authService.isLogged()"><button type="button"
+                        class="btn btn-sm px-3 btn-outline-primary app-notification-btn mr-md-1 mx-auto mb-2 mb-md-0"
+                        (click)="goToLogin()">Iniciar
+                        Sesión</button>
+                </li>
+                <li *ngIf="$authService.isLogged()">
+                    <button class="navbar-app-button-toggle" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                        <mat-icon class="navbar-app-icon-toggle">account_circle_outline</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item type="button" routerLink="/dashboard/main">
+                            <mat-icon>home</mat-icon>
+                            <span>Tu cuenta</span>
+                        </button>
+                        <button mat-menu-item (click)="logOut()">
+                            <mat-icon>settings_power</mat-icon>
+                            <span>Cerrar Sesión</span>
+                        </button>
+                    </mat-menu>
+                </li>
+            </ul>
+        </nav>
     </div>
+
 </div>

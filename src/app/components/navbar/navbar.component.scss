@@ -1,4 +1,4 @@
-.navbar {
+:host ::ng-deep .navbar-app {
   width: auto;
   position: fixed;
   left: 0;
@@ -20,9 +20,6 @@
     height: 4em;
     z-index: 1000;
     background: rgb(255, 212, 2);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 0 5%;
   }
   &-button-platform {
@@ -72,8 +69,14 @@
   &-list-platform {
     margin: 0;
   }
-  // &-list-platform {
-  // }
+  &-list-platform ul {
+    margin: 0;
+  }
+  &-list-platform ul li {
+    list-style: none;
+    display: inline-block;
+  }
+
   &-list > li {
     display: inline-block;
   }
@@ -83,5 +86,42 @@
     text-decoration: none;
     font-family: "Roboto";
     color: #4a6a86;
+  }
+
+  &-prev-step {
+    position: absolute;
+    left: -65px;
+    top: 0;
+    bottom: 0;
+  }
+
+  &-platform-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-icon-toggle {
+    height: 50px !important;
+    width: 50px !important;
+    font-size: 50px !important;
+    fill: #222222 !important;
+    color: #222222 !important;
+    line-height: 50px !important;
+  }
+
+  &-button-toggle {
+    height: 50px !important;
+    width: 50px !important;
+    line-height: 50px !important;
+  }
+
+  &-button-toggle > span.mat-button-wrapper {
+    height: 50px !important;
+    width: 50px !important;
+    line-height: 50px !important;
   }
 }

@@ -1,1 +1,41 @@
-<p>login works!</p>
+<div class="fade modal-backdrop show"></div>
+<div role="dialog" aria-modal="true" class="fade modal show" tabindex="-1" style="display: block;">
+    <div aria-labelledby="contained-modal-title-vcenter" role="document"
+        class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="border-bottom-0 bg-primary text-white modal-header">
+                <h5 class="modal-title">Iniciar sesión</h5><button type="button" class="close text-white" (click)="closeOutLogin()"><span
+                        aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <form id="sesion" [formGroup]="formLogin" (submit)="signIn()">
+                    <div class="form-group delete-input-arrow border-0"><label for="">Ingresa con Email o
+                            Celular:</label><input id="mobile_phone" name="mobile_phone" type="text"
+                            class="form-control delete-input-arrow" placeholder="Email o celular" required="" value="" formControlName="email">
+                    </div>
+                    <div class="form-group"><label for="">Contraseña:</label>
+                        <div class="input-group d-flex"><input id="password" name="password" type="password" class="form-control" placeholder="Contraseña" required=""
+                                style="border-top-right-radius: 0px; border-bottom-right-radius: 0px; width: 80%;" formControlName="password">
+                            <div class="input-group-append"><button class="btn btn-outline-primary px-3 shadow-none"
+                                    type="button"
+                                    style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; padding: 9.5px 24px;"><i
+                                        class="fal fa-eye"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+                        <div class="custom-control custom-switch"><input type="checkbox" class="custom-control-input"
+                                id="recordSession" name="recordSession"><label class="custom-control-label"
+                                for="recordSession">Recordarme</label></div>
+                    </div>
+                    <hr>
+                    <div class="form-group font-size-14 d-flex justify-content-center"><a
+                            href="#">Olvidé mi contraseña</a></div>
+                    <div class="form-group font-size-14 d-flex justify-content-center"><label for="">¿No tienes una
+                            cuenta? <a routerLink="/signup"> Regístrate</a></label></div>       
+                </form>
+            </div>
+            <div class="justify-content-center bg-light modal-footer"><button type="button" form="sesion"
+                    class="btn btn-primary" (click)="signIn()">LISTO</button></div>
+        </div>
+    </div>
+</div>

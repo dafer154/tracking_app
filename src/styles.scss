@@ -1,34 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
-@import './assets/icons/icons.css';
+@import "./assets/icons/icons.css";
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
 }
 
 html,
-body, h1 {
-  margin: 0;
-  padding: 0;
-  font-family: "Roboto";
+body,
+h1 {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: "Roboto" !important;
+}
+
+h1 {
+  font-size: 2em !important;
 }
 
 body {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;
 }
 
 a {
-  text-decoration: none;
-  cursor: pointer;
+  text-decoration: none !important;
+  cursor: pointer !important;
 }
 
 img {
-  vertical-align: middle;
-  border-style: none;
+  vertical-align: middle !important;
+  border-style: none !important;
 }
 
 button {
-  cursor: pointer;
+  cursor: pointer !important;
   outline: none !important;
+}
+
+html,
+body {
+  height: 100% !important;
+}
+
+body {
+  margin: 0 !important ;
+  font-family: "Roboto" !important;
 }

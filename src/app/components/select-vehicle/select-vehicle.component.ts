@@ -1,16 +1,20 @@
-import { Component, OnInit, DoCheck, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, OnInit, DoCheck, EventEmitter, Output, ViewChild, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { LoginService } from 'src/app/services/login/login.service';
+import { LocalstorageService } from 'src/app/services/localstorage.service';
 
 @Component({
   selector: 'app-select-vehicle',
   templateUrl: './select-vehicle.component.html',
   styleUrls: ['./select-vehicle.component.scss']
 })
-export class SelectVehicleComponent implements OnInit, DoCheck {
+export class SelectVehicleComponent implements OnInit, DoCheck, OnChanges {
 
 
   @Output() data = new EventEmitter<any>();
   @Output() stepValue = new EventEmitter<any>();
+  @Input() backStepValue: number;
   @ViewChild('myForm') myForm: NgForm;
   public vehicles: any[] = [];
   public select_vehicle: number = 1;
@@ -22,7 +26,7 @@ export class SelectVehicleComponent implements OnInit, DoCheck {
     long: new FormControl('', [Validators.required]),
   });
 
-  constructor() { }
+  constructor(public $authService: AuthService, private $loginService: LoginService, private $localStorage: LocalstorageService) { }
 
   ngOnInit(): void {
     this.vehicles.push(
@@ -46,6 +50,14 @@ export class SelectVehicleComponent implements OnInit, DoCheck {
       return;
     } else if (this.steps == 2) {
       this.data.emit({ name: this.vehicles[this.select_vehicle - 1]['name'], weight: this.vehicles[this.select_vehicle - 1]['weight'], height: this.formDimensions.get('height').value, width: this.formDimensions.get('width').value, long: this.formDimensions.get('long').value });
+      return;
+    }
+
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['backStepValue'] && this.backStepValue != null) {
+      this.steps = this.backStepValue;
     }
   }
 
@@ -90,4 +102,17 @@ export class SelectVehicleComponent implements OnInit, DoCheck {
     this.steps = steps;
   }
 
+  requestNewService(): void {
+    this.$localStorage.setStatusLogut(true);
+  }
+
+  logOut(): void {
+    this.$loginService.logOut().subscribe((res) => {
+      localStorage.clear();
+      this.$authService.setToken(undefined);
+      console.log(res);
+    }, (err) => {
+      console.error(err);
+    });
+  }
 }

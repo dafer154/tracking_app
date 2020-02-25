@@ -1,0 +1,47 @@
+.signup {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 16px;
+  background-image: url(https://account.quick.com.co/assets/img/template.png);
+  background-repeat: repeat;
+  background-attachment: fixed;
+  scroll-behavior: smooth;
+  min-width: 340px;
+  min-height: 100vh;
+  color: #666;
+  background-color: #fff;
+}
+
+label {
+  text-align: left !important;
+  width: 100%;
+}
+
+.btn-juridic {
+  color: #fff !important;
+}
+
+.AppForm {
+  border: 1px solid #eeeeee;
+  box-shadow: 0 4px 6px 0px rgba(0, 0, 0, 0.05);
+}
+
+.AppForm__content {
+  text-align: left;
+}
+
+.AppForm__content {
+  background: #fff;
+  padding: 1.5rem 1rem 1rem 1rem;
+  text-align: left;
+}
+
+.AppForm__header {
+  background: #fefefe;
+  padding: 1rem 0;
+  border-radius: 3px 3px 0 0;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

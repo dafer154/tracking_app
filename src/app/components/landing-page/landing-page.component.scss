@@ -69,8 +69,10 @@
   }
 
   &-contact-title {
-    font-size: 2.5rem;
-    margin: 0;
+    font-size: 2.5rem !important;
+    margin: 0 !important;
+    line-height: 48px !important;
+    font-weight: 700 !important;
   }
 
   &-contact-text {

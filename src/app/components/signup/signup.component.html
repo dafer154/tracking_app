@@ -1,0 +1,293 @@
+<div class="signup">
+    <div class="" id="page-loading">
+        <div class="loader-container"><i class="fas fa-circle-notch loading-icon init"></i><small
+                class="text-muted font-size-15 d-block mt-1">Cargando...</small></div>
+    </div>
+    <div class="container" *ngIf="!natural && !juridical">
+        <div style="height:100vh;">
+            <div class="row text-center justify-content-center align-items-center py-4">
+                <div class="col-xl-6 col-lg-6 col-md-8 col-sm-8">
+                    <form class="AppForm" id="js-validate-code">
+                        <header class="AppForm__header"><a href="/"><img class="AppForm__logo"
+                                    src="https://account.quick.com.co/assets/img/logo-quick.svg" alt="Logo Quick"></a><span
+                                class="text-muted font-size-14 pt-1">Registro Exitoso</span></header>
+                        <section class="AppForm__content">
+                            <div class="row">
+                                <div class="col-12 mb-3">
+                                    <p class="text-center font-size-18">¿Cómo deseas Registrarte?</p>
+                                </div>
+                            </div>
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-12 d-flex flex-column flex-md-row justify-content-around"><a
+                                        class="btn btn-secondary my-2" (click)="natural = true">Persona Natural </a><a
+                                        class="btn btn-primary my-2 btn-juridic" (click)="juridical = true">Empresa / Compañia </a>
+                                </div>
+                            </div>
+                        </section>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FORM NATURAL -->
+    <div class="container" *ngIf="natural">
+        <div style="height:100vh;">
+            <div class="row text-center justify-content-center align-items-center py-4">
+                <div class="col-lg-6 col-md-8 col-sm-10">
+                    <form class="AppForm" id="js-signin">
+                        <header class="AppForm__header"><a href="/"><img class="AppForm__logo"
+                                    src="https://account.quick.com.co/assets/img/logo-quick.svg" alt="Logo Quick"></a><span
+                                class="text-muted font-size-14 pt-1">Registro Personas</span></header>
+                        <section class="AppForm__content">
+                            <div class="form-group text-center"><small class="text-secondary">¿Tienes Empresa?
+                                    Registrate <a href="/companies">Aquí </a></small>
+                                <hr>
+                            </div>
+                            <div class="form-group"><label for="name">Nombres</label><input class="form-control"
+                                    type="text" placeholder="Tus Nombres" name="name" data-toggle="tooltip"
+                                    data-placement="bottom" title="Nombres completos" required="" id="name"></div>
+                            <div class="form-group"><label form="lastName">Apellidos</label><input class="form-control"
+                                    type="text" placeholder="Tus Apellidos" data-toggle="tooltip"
+                                    data-placement="bottom" title="Apellidos completos" required="" id="lastName"></div>
+                            <div class="row">
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="form-group"><label for="typeNumber">Tipo:</label><select
+                                            class="form-control" id="typeNumber" name="typenumber" required="">
+                                            <option value="" disabled="" selected="">Seleccionar</option>
+                                            <option value="1">CC</option>
+                                            <option value="2">CE</option>
+                                            <option value="3">PAS</option>
+                                        </select></div>
+                                </div>
+                                <div class="col-xs-4 col-sm-8 col-md-8 col-lg-8">
+                                    <div class="form-group"><label for="idNumber">Número de Documento:</label><input
+                                            class="form-control" type="number" name="idnumber" min="0"
+                                            placeholder="Número Documento" required="" id="idNumber"></div>
+                                </div>
+                            </div>
+                            <div class="form-group"><label for="email">Email:</label><input class="form-control"
+                                    type="email" name="email" placeholder="Email" autocomplete="email" required=""
+                                    id="email"></div>
+                            <div class="form-group"><label for="phone">Celular:</label><input class="form-control"
+                                    type="number" name="phone" placeholder="Celular" required="" id="phone"></div>
+                            <div class="form-group"><label for="password">Contraseña:</label>
+                                <div class="input-group mb-3"><input class="form-control" type="password"
+                                        name="password" placeholder="Contraseña" aria-describedby="passwordHelp"
+                                        autocomplete="new-password" required="" id="password">
+                                    <div class="input-group-append"><span class="input-group-text bg-light"
+                                            id="password-view"><i class="fa fa-eye text-primary cursor-pointer"
+                                                id="js-password-view-icon"></i></span></div>
+                                </div><small class="form-text text-muted font-size-12" id="passwordHelp">La contraseña
+                                    debe contener entre 8-20 caracteres, letras minúsculas, mayúsculas y números, no
+                                    debe llevar espacios ni caracteres especiales.</small>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-check"><input class="form-check-input" type="checkbox" required=""
+                                        id="terms"><label class="form-check-label" for="terms">Acepto los <a
+                                            href="https://quick.com.co/politica" target="_blank" rel="nofollow">Términos
+                                            y condiciones</a></label></div>
+                            </div>
+                            <hr>
+                            <div class="form-group text-center"><label class="d-none" id="js-message-status">Algunos
+                                    campos estan repetidos intenta de nuevo</label></div>
+                            <div class="form-group"><button class="btn btn-primary btn-block" type="submit"
+                                    id="js-btn-submit">Enviar <i class="loading-icon fas fa-circle-notch ml-2"
+                                        id="js-loading-icon"></i></button></div>
+                        </section>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- // -->
+
+    <!-- FORM JURIDICAL -->
+    <div class="container" *ngIf="juridical">
+        <div style="height:100vh;">
+            <div class="row text-center justify-content-center align-items-center py-4">
+                <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12">
+                    <form class="AppForm" id="js-signin-companies">
+                        <header class="AppForm__header"><a href="/"><img src="https://account.quick.com.co/assets/img/logo-quick.svg"
+                                    alt="Logo Quick"></a><span class="text-muted font-size-14 pt-1">Registro
+                                Empresas</span></header>
+                        <section class="AppForm__content">
+                            <div class="row">
+                                <div class="col-12 mt-2"><b>Datos de la Empresa:</b>
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="form-group"><label for="companyName">Nombre de la Empresa:</label><input
+                                            class="form-control" type="text" required="" placeholder="Compañia"
+                                            id="companyName"></div>
+                                </div>
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="form-group"><label for="legalName">Nombre Legal de la
+                                            Compañia:</label><input class="form-control" type="text" required=""
+                                            placeholder="Nombre Legal" id="legalName"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="form-group"><label for="nit">NIT de la Empresa:</label><input
+                                            class="form-control" type="number" name="nit" required="" placeholder="Nit"
+                                            id="nit"></div>
+                                </div>
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="form-group"><label for="city">Ciudad:</label><select
+                                            class="form-control" name="city" id="city">
+                                            <option value="" selected="" disabled="">Seleccionar</option>
+                                            <option value="2">Armenia</option>
+                                            <option value="3">Barbosa</option>
+                                            <option value="4">Barranquilla</option>
+                                            <option value="1">Bogotá</option>
+                                            <option value="5">Bucaramanga</option>
+                                            <option value="6">Buenaventura</option>
+                                            <option value="7">Buga</option>
+                                            <option value="8">Cajica</option>
+                                            <option value="9">Calera</option>
+                                            <option value="10">Cali</option>
+                                            <option value="11">Cartagena</option>
+                                            <option value="12">Cartago</option>
+                                            <option value="13">Chia</option>
+                                            <option value="14">Cota</option>
+                                            <option value="15">Cucuta</option>
+                                            <option value="16">Dosquebradas</option>
+                                            <option value="17">Duitama</option>
+                                            <option value="18">Espinal</option>
+                                            <option value="19">Facacativa</option>
+                                            <option value="20">Funza</option>
+                                            <option value="21">Fusagasufa</option>
+                                            <option value="22">Gachancipa</option>
+                                            <option value="23">Garzon</option>
+                                            <option value="24">Girardot</option>
+                                            <option value="25">Guarne</option>
+                                            <option value="26">Ibague</option>
+                                            <option value="27">La estrella</option>
+                                            <option value="28">Madrid</option>
+                                            <option value="29">Manizales</option>
+                                            <option value="30">Medellin</option>
+                                            <option value="31">Melgar</option>
+                                            <option value="32">Mocoa</option>
+                                            <option value="33">Mosquera</option>
+                                            <option value="34">Neiva</option>
+                                            <option value="35">Palmira</option>
+                                            <option value="36">Pereira</option>
+                                            <option value="37">Pitalito</option>
+                                            <option value="38">Puerto Gaitan</option>
+                                            <option value="39">Sabaneta</option>
+                                            <option value="40">San gil</option>
+                                            <option value="49">Santa Marta</option>
+                                            <option value="41">Sogamoso</option>
+                                            <option value="42">Sopo</option>
+                                            <option value="43">Tocancipa</option>
+                                            <option value="44">Tulua</option>
+                                            <option value="45">Tunja</option>
+                                            <option value="46">Villavicencio</option>
+                                            <option value="47">Yopal</option>
+                                            <option value="48">Zipaquira</option>
+                                        </select></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="form-group"><label for="address">Dirección:</label><input
+                                            class="form-control" type="text" required=""
+                                            placeholder="Ej: Av 56 # 76 89 - Piso 2" name="address" id="address"></div>
+                                </div>
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="form-group"><label for="paymentAddress">Dirección de
+                                            Pagos:</label><input class="form-control" type="text" required=""
+                                            placeholder="Ej: Av 56 # 76 89 - Piso 2" name="paymentAddress"
+                                            id="paymentAddress"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 mt-2"><b>Datos Personales:</b>
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="form-group"><label for="job">Cargo:</label><input class="form-control"
+                                            type="text" required="" placeholder="Ej: Gerente de Ventas" name="job"
+                                            id="job"></div>
+                                </div>
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="form-group"><label for="name">Nombres:</label><input
+                                            class="form-control" type="text" required="" placeholder="Tus Nombres:"
+                                            name="job" id="name"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="form-group"><label for="lastName">Apellidos</label><input
+                                            class="form-control" type="text" required="" placeholder="Tus Apellidos"
+                                            name="lastName" id="lastName"></div>
+                                </div>
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="form-group"><label for="email">Email</label><input class="form-control"
+                                            type="email" required="" placeholder="Tu Email" name="email"
+                                            autocomplete="email" id="email"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="form-group"><label for="phone">Celular</label><input
+                                            class="form-control" type="number" required="" placeholder="Ej: 3215678367"
+                                            name="phone" id="phone"></div>
+                                </div>
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="form-group"><label for="password">Contraseña</label>
+                                        <div class="input-group mb-3"><input class="form-control" type="password"
+                                                name="password" required="" placeholder="Contraseña"
+                                                autocomplete="new-password" id="password">
+                                            <div class="input-group-append"><span class="input-group-text bg-light"
+                                                    id="password-view"><i class="fa fa-eye text-primary cursor-pointer"
+                                                        id="js-password-view-icon"></i></span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 mb-4"><small class="form-text text-muted font-size-12"
+                                        id="password-help">La contraseña debe contener entre 8-20 caracteres, letras
+                                        minúsculas, mayúsculas y números, no debe llevar espacios ni caracteres
+                                        especiales.</small></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                required="" id="terms"><label class="form-check-label font-size-14"
+                                                for="terms">Acepto los </label><a class="font-size-14"
+                                                href="https://quick.com.co/politica" target="_blank" rel="nofollow">
+                                                Términos y condiciones</a></div>
+                                    </div>
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group text-center"><label class="d-none"
+                                            id="js-message-label">Algunos campos estan repetidos intenta de
+                                            nuevo</label></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 my-0 mx-auto"><button class="btn btn-primary btn-block"
+                                        type="submit" id="js-btn-submit">Enviar<i
+                                            class="loading-icon fas fa-circle-notch ml-2"
+                                            id="js-loading-icon"></i></button></div>
+                            </div>
+                        </section>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- // -->
+
+</div>
