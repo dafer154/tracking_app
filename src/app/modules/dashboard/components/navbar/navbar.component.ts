@@ -141,4 +141,8 @@ export class NavbarComponentDashboard implements OnInit {
     this.router.navigate(['/platform']);
   }
 
+  goToMainDashboard(): void {
+    this.router.navigate(['/dashboard/main']);
+  }
+
 }

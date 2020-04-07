@@ -1,0 +1,168 @@
+<app-popup [settings]="popupSettings" (exit)="close($event)">
+    <ng-template>
+        <div class="row text-center justify-content-center align-items-center py-4">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <form class="AppForm" id="companies" [formGroup]="formEditServices" (submit)="updateService()">
+                    <section class="AppForm__content">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6">
+                                <label for="companyName">Altura:</label>
+                                <mat-form-field floatLabel="never" class="signup-inputMaterial">
+                                    <input matInput formControlName="merchandise_height"
+                                        [(ngModel)]="services.merchandise_height" type="number" maxlength="100"
+                                        placeholder="Altura">
+                                    <mat-error>Campo obligatorio</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <label for="legalName">Ancho:</label>
+                                <mat-form-field floatLabel="never" class="signup-inputMaterial">
+                                    <input matInput formControlName="merchandise_width"
+                                        [(ngModel)]="services.merchandise_width" type="number" maxlength="100"
+                                        placeholder="Ancho">
+                                    <mat-error>Campo obligatorio</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6">
+                                <label for="nit">Largo:</label>
+                                <mat-form-field floatLabel="never" class="signup-inputMaterial">
+                                    <input matInput formControlName="merchandise_long"
+                                        [(ngModel)]="services.merchandise_long" type="number" maxlength="100"
+                                        placeholder="Largo">
+                                    <mat-error
+                                        *ngIf="formEditServices.controls['merchandise_long'].errors?.required || formEditServices.controls['merchandise_long'].errors?.touched">
+                                        Campo obligatorio</mat-error>
+                                    <mat-error *ngIf="formEditServices.controls['merchandise_long'].errors?.pattern">
+                                        Campo
+                                        solo
+                                        admite numeros
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <label for="city">Fecha:</label>
+                                <mat-form-field floatLabel="never" class="service-inputMaterial-none">
+                                    <input matInput [matDatepicker]="picker" [min]="currentDate" type="text"
+                                        formControlName="merchandise_date" placeholder="Seleccione una fecha"
+                                        (click)="picker.open()">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                    <mat-error
+                                        *ngIf="formEditServices.get('merchandise_date').errors?.required && !formEditServices.get('merchandise_date').errors?.matDatepickerParse && formEditServices.get('merchandise_date').dirty">
+                                        Campo obligatorio</mat-error>
+                                    <mat-error
+                                        *ngIf="formEditServices.get('merchandise_date').errors?.matDatepickerParse">
+                                        Formato Invalido
+                                    </mat-error>
+                                    <mat-error
+                                        *ngIf="formEditServices.get('merchandise_date').value && formEditServices.get('merchandise_date').errors?.matDatepickerMin.min">
+                                        La fecha no puede estar en el pasado
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6">
+                                <label for="address">Descripción:</label>
+                                <mat-form-field floatLabel="never" class="signup-inputMaterial">
+                                    <input matInput formControlName="merchandise_description"
+                                        [(ngModel)]="services.merchandise_description" type="text" maxlength="200"
+                                        placeholder="Descripción">
+                                    <mat-error>Campo obligatorio</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <label for="paymentAddress">Valor:</label>
+                                <mat-form-field floatLabel="never" class="signup-inputMaterial">
+                                    <input matInput formControlName="merchandise_value"
+                                        [(ngModel)]="services.merchandise_value" type="text" maxlength="200"
+                                        placeholder="Valor">
+                                    <mat-error>Campo obligatorio</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6">
+                                <label for="job">Precio:</label>
+                                <mat-form-field floatLabel="never" class="signup-inputMaterial">
+                                    <input matInput formControlName="merchandise_price"
+                                        [(ngModel)]="services.merchandise_price" type="text" maxlength="100"
+                                        placeholder="Precio">
+                                    <mat-error>Campo obligatorio</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <label for="name">Estado:</label>
+                                <mat-form-field floatLabel="never" class="signup-inputMaterial">
+                                    <mat-label>Estado:</mat-label>
+                                    <mat-select formControlName="merchandise_status"
+                                        [(ngModel)]="services.merchandise_status">
+                                        <mat-option value="EN ESPERA">EN ESPERA</mat-option>
+                                        <mat-option value="ASIGNADO">ASIGNADO</mat-option>
+                                        <mat-option value="ACEPTADO">ACEPTADO</mat-option>
+                                        <mat-option value="PEND. PAGO">PEND. PAGO</mat-option>
+                                        <mat-option value="APROBADO">APROBADO</mat-option>
+                                        <mat-option value="EN RUTA">EN RUTA</mat-option>
+                                        <mat-option value="NOVEDAD">NOVEDAD</mat-option>
+                                        <mat-option value="FINALIZADO">FINALIZADO</mat-option>
+                                        <mat-option value="RECHAZADO">RECHAZADO</mat-option>
+                                    </mat-select>
+                                    <mat-error>Campo obligatorio</mat-error>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6">
+                                <label for="lastName">Dir/Carga</label>
+                                <mat-form-field floatLabel="never" class="signup-inputMaterial">
+                                    <input matInput formControlName="merchandise_address_carge"
+                                        [(ngModel)]="services.merchandise_address_carge" type="text" maxlength="100"
+                                        placeholder="Dir/Carga">
+                                    <mat-error>Campo obligatorio</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <label for="email">Dir/Descarga</label>
+                                <mat-form-field floatLabel="never" class="signup-inputMaterial">
+                                    <input matInput formControlName="merchandise_address_uncarge"
+                                        [(ngModel)]="services.merchandise_address_uncarge" type="text" maxlength="100"
+                                        placeholder="Dir/Descarga">
+                                    <mat-error
+                                        *ngIf="formEditServices.controls['merchandise_address_uncarge'].errors?.required || formEditServices.controls['merchandise_address_uncarge'].errors?.touched">
+                                        Campo obligatorio</mat-error>
+
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6">
+                                <label for="phone">Camionero asignado</label>
+                                <mat-form-field floatLabel="never" class="signup-inputMaterial">
+                                    <input matInput formControlName="vehicles_id" [(ngModel)]="services.vehicles_id"
+                                        type="number" maxlength="100" placeholder="Camión asignado">
+                                    <mat-error
+                                        *ngIf="formEditServices.controls['vehicles_id'].errors?.required || formEditServices.controls['vehicles_id'].errors?.touched">
+                                        Campo obligatorio</mat-error>
+
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-4">
+                                <div class="form-group"><button class="btn btn-primary btn-block btn-sm" type="submit"
+                                        id="js-btn-submit">Actualizar <i class="fal fa-circle-notch ml-2"
+                                            *ngIf="spinner"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+                </form>
+            </div>
+        </div>
+    </ng-template>
+</app-popup>
+<app-alerts *ngIf="alert" [typeAlert]="typeAlert" (exit)="getAlertData($event)"></app-alerts>

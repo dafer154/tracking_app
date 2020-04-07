@@ -1,0 +1,9 @@
+.main-container {
+    margin-top: 4em;
+}
+
+.services {
+    &-card-header {
+        background: linear-gradient(60deg, #222222, #4a6a86) !important;
+    }
+}

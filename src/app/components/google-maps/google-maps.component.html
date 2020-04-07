@@ -1,0 +1,4 @@
+<google-map [hidden]="statusAddress" #mainMap height="100%" width="100%" [zoom]="zoom" [center]="center" [options]="options"
+    (mapDragend)="getCenterUbication($event)">
+</google-map>
+<div id="mapPolylines" [hidden]="!statusAddress" height="100%" width="100%"></div>

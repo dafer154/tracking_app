@@ -1,22 +1,47 @@
 .logo {
+  padding: 0 !important; // change if
+  background: linear-gradient(60deg, #222222, #4a6a86) !important;
   a {
     color: #ffffff !important;
+    text-transform: capitalize;
   }
   &-icon {
     text-decoration: none !important;
     font-family: "Roboto" !important;
   }
-  &-icon > h1 {
+  &-icon > h5 {
     font-weight: 400 !important;
     color: #ffffff !important;
-    letter-spacing: -4px !important;
+    letter-spacing: -3px !important;
   }
   &-icon-decription {
     // margin-left: 0.2em !important;
     font-weight: 500 !important;
-    font-size: 20px !important;
+    font-size: 14px !important;
     color: #efefef !important;
-    letter-spacing: -2px !important;
+    letter-spacing: -1px !important;
+    text-transform: lowercase !important;
+  }
+}
+
+.navbar-app {
+  &-icon {
+    text-decoration: none;
+    font-family: "Roboto";
+  }
+  &-icon > h5 {
+    font-weight: 400 !important;
+    color: #000;
+    letter-spacing: -1px;
+    margin-top: 7px !important;
+    margin-bottom: 7px !important;
+  }
+  &-icon-decription {
+    margin-left: 0.2em;
+    font-weight: 500;
+    font-size: 14px;
+    color: #666;
+    letter-spacing: -1px !important;
     text-transform: lowercase !important;
   }
 }

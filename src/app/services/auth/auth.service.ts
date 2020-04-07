@@ -7,6 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
 
   private token: BehaviorSubject<any>;
+  private roleId: BehaviorSubject<any>;
 
   constructor() {
     this.setSession();
@@ -15,7 +16,7 @@ export class AuthService {
 
   private setSession() {
     let session = this.getTokenSaved();
-    if (session) { 
+    if (session) {
       this.saveToken(session);
       return;
     }
@@ -44,5 +45,16 @@ export class AuthService {
 
   private getTokenSaved(): string {
     return localStorage.getItem('user');
+  }
+
+  public isAdmin(): BehaviorSubject<any> {
+    let $localStorage = localStorage.getItem('user');
+    if ($localStorage !== null && $localStorage !== undefined) {
+      let dataUser = JSON.parse($localStorage);
+      let admin: any = (dataUser.role === 'ADMIN') ? true : false;
+      this.roleId = admin;
+      return this.roleId;
+    }
+    return null;
   }
 }

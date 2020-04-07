@@ -1,0 +1,187 @@
+<div class="container-fluid main-container">
+    <div class="row">
+        <div class="col pt-3">
+            <!-- <div class="page-title">
+                <h1>Servicios</h1>
+            </div> -->
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/dashboard/main">Inicio</a></li>
+                    <li class="breadcrumb-item active">Rutas</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="app-panel">
+                <div class="container-fluid px-0">
+                    <div class="row" *ngIf="routes.length == 0">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-primary services-card-header">
+                                    <h4 class="card-title ">Rutas</h4>
+                                    <p class="card-category">Aqui esta el listado todas de las rutas</p>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class=" text-primary">
+                                                <th>
+                                                    ID
+                                                </th>
+                                                <th>
+                                                    Name
+                                                </th>
+                                                <th>
+                                                    Country
+                                                </th>
+                                                <th>
+                                                    City
+                                                </th>
+                                                <th>
+                                                    Salary
+                                                </th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        1
+                                                    </td>
+                                                    <td>
+                                                        Dakota Rice
+                                                    </td>
+                                                    <td>
+                                                        Niger
+                                                    </td>
+                                                    <td>
+                                                        Oud-Turnhout
+                                                    </td>
+                                                    <td class="text-primary">
+                                                        $36,738
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        2
+                                                    </td>
+                                                    <td>
+                                                        Minerva Hooper
+                                                    </td>
+                                                    <td>
+                                                        Curaçao
+                                                    </td>
+                                                    <td>
+                                                        Sinaai-Waas
+                                                    </td>
+                                                    <td class="text-primary">
+                                                        $23,789
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        3
+                                                    </td>
+                                                    <td>
+                                                        Sage Rodriguez
+                                                    </td>
+                                                    <td>
+                                                        Netherlands
+                                                    </td>
+                                                    <td>
+                                                        Baileux
+                                                    </td>
+                                                    <td class="text-primary">
+                                                        $56,142
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        4
+                                                    </td>
+                                                    <td>
+                                                        Philip Chaney
+                                                    </td>
+                                                    <td>
+                                                        Korea, South
+                                                    </td>
+                                                    <td>
+                                                        Overland Park
+                                                    </td>
+                                                    <td class="text-primary">
+                                                        $38,735
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        5
+                                                    </td>
+                                                    <td>
+                                                        Doris Greene
+                                                    </td>
+                                                    <td>
+                                                        Malawi
+                                                    </td>
+                                                    <td>
+                                                        Feldkirchen in Kärnten
+                                                    </td>
+                                                    <td class="text-primary">
+                                                        $63,542
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        6
+                                                    </td>
+                                                    <td>
+                                                        Mason Porter
+                                                    </td>
+                                                    <td>
+                                                        Chile
+                                                    </td>
+                                                    <td>
+                                                        Gloucester
+                                                    </td>
+                                                    <td class="text-primary">
+                                                        $78,615
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NO RESULTS -->
+                <div class="row" *ngIf="routes.length > 0">
+                    <div class="col">
+                        <div class="tab-content">
+                            <div id="tab-services-tabpane-actives" aria-labelledby="tab-services-tab-actives"
+                                role="tabpanel" aria-hidden="false" class="fade tab-pane active show">
+                                <div id="tab-actives" class="tab-pane show active">
+                                    <div class="col-md-12 text-center">
+                                        <div class="row">
+                                            <div class="col-12 ">
+                                                <article class="app-panel app-panel-empty"><img
+                                                        src="assets/img/no_results.png"
+                                                        width="380"><br>
+                                                    <p class="app-panel-empty-message text-center">No hay usuarios
+                                                        en esta sección...</p>
+                                                </article>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- NO RESULTS -->
+
+            </div>
+        </div>
+    </div>
+</div>

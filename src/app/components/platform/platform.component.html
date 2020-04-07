@@ -1,11 +1,14 @@
 <app-navbar (valueStep)="getValueStep($event)" [statusButton]="valueBStepPostive"
-    (statusLogin)="getSattusLogin($event)"></app-navbar>
+    (statusLogin)="getStatusLogin($event)"></app-navbar>
 <div class="platform-progress-bar">
     <span class="platform-progress" [style.width.%]="widthPercent"></span>
 </div>
 <div class="platform-main">
     <app-select-vehicle (data)="vehicleData($event)" (stepValue)="stepsValue($event)"
-        [backStepValue]="valueBStepNegative"></app-select-vehicle>
+        [backStepValue]="valueBStepNegative" (dataRoute)="getDataRoute($event)"></app-select-vehicle>
 </div>
-<app-sidebar-service [data]="data"></app-sidebar-service>
-<app-login *ngIf="login && !$authService.isLogged()" (closeLogin)="closeLogin($event)"></app-login>
+<app-sidebar-service [data]="data" [route]="dataRoute"></app-sidebar-service>
+<app-login *ngIf="login" [animation]="login ? '1' : '*'" (closeLogin)="closeLogin($event)">
+</app-login>
+<app-alerts *ngIf="alert" [typeAlert]="typeAlert" (exit)="getAlertData($event)">
+</app-alerts>

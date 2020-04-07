@@ -23616,14 +23616,14 @@ a.text-dark:focus {
 }
 .app-datetime-date {
   border-radius: 6px 6px 0 0 !important;
-  background: url("/assets/img/calendar.svg") no-repeat;
+  background: url("https://app.quick.com.co/assets/img/calendar.svg") no-repeat;
   padding-right: 50px !important;
   background-position: right;
   background-size: 19px;
   background-position-x: 97%;
 }
 .app-datetime-time {
-  background: url("/assets/img/hour.svg") no-repeat;
+  background: url("https://app.quick.com.co/assets/img/hour.svg") no-repeat;
   background-position: right;
   background-size: 19px;
   background-position-x: 97%;
@@ -23841,13 +23841,13 @@ a.text-dark:focus {
   background-color: #3c3c3c;
 }
 .app-credit-card-wrapper.vi {
-  background-image: url("/assets/img/credit-card-vi.png");
+  background-image: url("https://app.quick.com.co/assets/img/credit-card-vi.png");
 }
 .app-credit-card-wrapper.mc {
-  background-image: url("/assets/img/credit-card-mc.png");
+  background-image: url("https://app.quick.com.co/assets/img/credit-card-mc.png");
 }
 .app-credit-card-wrapper.dc {
-  background-image: url("/assets/img/credit-card-dc.png");
+  background-image: url("https://app.quick.com.co/assets/img/credit-card-dc.png");
 }
 .app-credit-card-wrapper::before {
   content: "";

@@ -3,23 +3,31 @@
     <div class="summary-content"><label class="summary-close btn-effect" for="summary-toggle-check">×</label>
         <div class="summary-title"><span>Resumen de servicio</span></div>
         <div class="summary-boxes">
-            <div class="summary-box"><i class="fal fa-truck-moving"></i><span class="summary-box-text">{{data.name}}</span></div>
-            <div class="summary-box"><i class="fal fa-road"></i><span class="summary-box-text">0 Km</span></div>
-            <div class="summary-box"><i class="fal fa-clock"></i><span class="summary-box-text">0 Min</span></div>
+            <div class="summary-box"><i class="fal fa-truck-moving"></i><span
+                    class="summary-box-text">{{data ? data.name : ''}}</span></div>
+            <div class="summary-box"><i class="fal fa-road"></i><span
+                    class="summary-box-text">{{route ? route.dataRoute.distance : '0'}} Km</span></div>
+            <div class="summary-box"><i class="fal fa-clock"></i><span
+                    class="summary-box-text">{{route ? route.dataRoute.duration : '0'}} Min</span></div>
         </div>
         <div class="summary-rows">
             <div class="summary-row"><i class="fal fa-dolly summary-row-icon"></i><span
                     class="summary-row-key">Servicio:</span><span class="summary-row-value">Carga nacional</span></div>
             <div class="summary-row"><i class="fal fa-weight-hanging summary-row-icon"></i><span
-                    class="summary-row-key">Peso:</span><span class="summary-row-value">{{data.weight}}</span></div>
+                    class="summary-row-key">Peso:</span><span
+                    class="summary-row-value">{{data ? data.weight : ''}}</span></div>
             <div class="summary-row"><i class="fal fa-arrows-alt-v summary-row-icon"></i><span
-                    class="summary-row-key">Alto:</span><span class="summary-row-value"></span>{{data.height ? data.height + ' m³' : ''}}</div>
+                    class="summary-row-key">Alto:</span><span
+                    class="summary-row-value"></span>{{data && data.height ? data.height + ' m³' : ''}}</div>
             <div class="summary-row"><i class="fal fa-arrows-alt-h summary-row-icon"></i><span
-                    class="summary-row-key">Ancho:</span><span class="summary-row-value"></span>{{data.width ? data.width + ' m³' : ''}}</div>
+                    class="summary-row-key">Ancho:</span><span
+                    class="summary-row-value"></span>{{data && data.width ? data.width + ' m³' : ''}}</div>
             <div class="summary-row"><i class="fal fa-exchange-alt summary-row-icon"></i><span
-                    class="summary-row-key">Largo:</span><span class="summary-row-value"></span>{{data.long ? data.long + ' m³' : ''}}</div>
+                    class="summary-row-key">Largo:</span><span
+                    class="summary-row-value"></span>{{data && data.long ? data.long + ' m³' : ''}}</div>
             <div class="summary-row expandable false"><i class="fal fa-map-marked-alt summary-row-icon"></i><span
-                    class="summary-row-key">Direcciones:</span><span class="summary-row-value">0</span>
+                    class="summary-row-key">Direcciones:</span><span
+                    class="summary-row-value">{{data && data.directions ? data.directions : '0'}}</span>
                 <div class="summary-row-subitems">
                     <ul>
                         <li>Sin direcciones asignadas</li>

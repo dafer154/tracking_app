@@ -4,6 +4,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { PlatformComponent } from './components/platform/platform.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { AuthGuard } from './helpers/auth-guard';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard],
     children: [{
       path: '',
       loadChildren: './modules/dashboard/dashboard.module#DashboardModule'

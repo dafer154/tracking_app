@@ -9,7 +9,6 @@ import { AfterViewInit, Component } from '@angular/core';
 export class CarouselSliderComponent implements AfterViewInit {
 
   ngAfterViewInit() {
-    console.log('ME ESTAS VIENDO LA CARA');
 
   }
 

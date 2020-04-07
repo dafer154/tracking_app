@@ -11,6 +11,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 10%;
+
   &-platform {
     width: auto;
     position: fixed;
@@ -19,15 +20,22 @@
     right: 0;
     height: 4em;
     z-index: 1000;
-    background: rgb(255, 212, 2);
+    background: linear-gradient(60deg, #222222, #4a6a86) !important;
     padding: 0 5%;
   }
+
   &-button-platform {
     background-color: rgb(74, 106, 134);
     color: rgb(255, 255, 255);
     border-color: #4a6a86;
     margin-right: 0.5em;
   }
+
+  &-btn-landing {
+    vertical-align: text-bottom;
+    margin-top: 0px !important;
+  }
+
   &-button-platform,
   &-button-platform-two {
     border-radius: 6px;
@@ -43,21 +51,25 @@
       box-shadow 0.15s ease-in-out;
     cursor: pointer;
   }
+
   &-button-platform-two {
     background-color: rgba($color: #ffffff, $alpha: 0);
     color: #4a6a86;
     border-color: #4a6a86;
     margin-left: 0.5em;
   }
+
   &-icon {
     text-decoration: none;
     font-family: "Roboto";
   }
-  &-icon > h1 {
+
+  &-icon>h1 {
     font-weight: 400 !important;
     color: #000;
-    letter-spacing: -4px;
+    letter-spacing: -3px;
   }
+
   &-icon-decription {
     margin-left: 0.2em;
     font-weight: 500;
@@ -65,27 +77,37 @@
     color: #666;
     letter-spacing: -2px !important;
   }
+
   &-list,
   &-list-platform {
     margin: 0;
   }
+
   &-list-platform ul {
     margin: 0;
   }
+
   &-list-platform ul li {
     list-style: none;
     display: inline-block;
   }
 
-  &-list > li {
+  &-list {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+
+  &-list>li {
     display: inline-block;
   }
 
-  &-list > li > a {
+  &-list>li>a {
     padding: 1em 1em;
     text-decoration: none;
     font-family: "Roboto";
     color: #4a6a86;
+    font-size: 14px !important;
   }
 
   &-prev-step {
@@ -93,6 +115,8 @@
     left: -65px;
     top: 0;
     bottom: 0;
+    color: #f7f9fa !important;
+    border-color: #f7f9fa !important;
   }
 
   &-platform-wrap {
@@ -108,8 +132,8 @@
     height: 50px !important;
     width: 50px !important;
     font-size: 50px !important;
-    fill: #222222 !important;
-    color: #222222 !important;
+    fill: #f7f9fa !important;
+    color: #f7f9fa !important;
     line-height: 50px !important;
   }
 
@@ -119,7 +143,7 @@
     line-height: 50px !important;
   }
 
-  &-button-toggle > span.mat-button-wrapper {
+  &-button-toggle>span.mat-button-wrapper {
     height: 50px !important;
     width: 50px !important;
     line-height: 50px !important;

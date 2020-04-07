@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LocalstorageService } from 'src/app/services/localstorage.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -13,11 +14,20 @@ export class LandingPageComponent implements OnInit {
     { title: 'Slide 2' },
     { title: 'Slide 3' },
   ]
+  public login: boolean;
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, private $localStorage: LocalstorageService) { }
 
   ngOnInit(): void {
-    console.log('im hereee');
+    this.login = false;
+  }
+
+  getStatusLogin($event: any): void {
+    this.login = $event;
+  }
+
+  closeLogin($event): void {
+    this.login = $event;
   }
 
 }

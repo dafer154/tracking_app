@@ -4,7 +4,7 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box !important;
+  box-sizing: border-box;
 }
 
 html,
@@ -21,6 +21,7 @@ h1 {
 
 body {
   scroll-behavior: smooth !important;
+  background-color: #ffffff !important;
 }
 
 a {
@@ -44,6 +45,10 @@ body {
 }
 
 body {
-  margin: 0 !important ;
+  margin: 0 !important;
   font-family: "Roboto" !important;
+}
+
+.unscroll {
+  overflow: hidden;
 }

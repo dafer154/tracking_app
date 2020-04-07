@@ -1,6 +1,75 @@
 .select {
-    &-vehicle-container {
-        position: relative;
-        top: 5em;
-    }
+  &-vehicle-container {
+    position: relative;
+    top: 4em;
+  }
+}
+
+.service-inputMaterial {
+  position: relative;
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+  width: 1%;
+  margin-bottom: 0;
+
+  &-none {
+    width: 100% !important;
+  }
+}
+
+.map-step {
+  width: 80% !important;
+}
+
+.map-input {
+  position: absolute;
+  z-index: 1000;
+  right: .6em;
+  top: 1em;
+  width: 40%;
+}
+
+.map-marker {
+  position: absolute;
+  margin: auto;
+  left: 50%;
+  right: 50%;
+  height: 60px;
+  width: 40px;
+  bottom: 50%;
+}
+
+:host ::ng-deep .mat-button-wrapper {
+  padding-top: 0 !important;
+  padding-bottom: 2px !important;
+  line-height: unset !important;
+}
+
+:host ::ng-deep .mat-form-field-outline {
+  background-color: white;
+  border-radius: 5px;
+}
+
+:host ::ng-deep .slide {
+  position: relative;
+}
+
+.gps_fixed_button {
+  position: absolute;
+  right: .6em;
+  bottom: 28%;
+}
+
+.redbadge {
+  background: red;
+  color: white;
+}
+
+.progress-request {
+  height: 89vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, .6);
 }

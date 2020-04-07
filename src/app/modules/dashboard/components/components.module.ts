@@ -10,12 +10,21 @@ import { MaterialModule } from 'src/app/modules/material/material.module';
 import { LocalstorageService } from 'src/app/services/localstorage.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { LoginService } from 'src/app/services/login/login.service';
+import { RoutesListComponent } from '../../../components/routes-list/routes-list.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AlertsComponentDashboard } from '../components/alerts/alerts.component';
+import { GeneralComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
-  declarations: [NavbarComponentDashboard, SidebarComponentDashboard, FooterComponentDashboard, TableListComponent, MainComponent, UserProfileComponent],
+  declarations: [NavbarComponentDashboard, SidebarComponentDashboard, FooterComponentDashboard, TableListComponent, MainComponent, UserProfileComponent, RoutesListComponent, AlertsComponentDashboard],
   imports: [
     CommonModule,
-    MaterialModule
+    GeneralComponentsModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
+
   ],
   exports: [
     FooterComponentDashboard,
@@ -28,7 +37,6 @@ import { LoginService } from 'src/app/services/login/login.service';
     SidebarComponentDashboard,
   ],
   providers: [LocalstorageService, LoginService, AuthService],
-
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ComponentsModule { }

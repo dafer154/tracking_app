@@ -1,0 +1,21 @@
+<div class="popup-container">
+    <div role="dialog" aria-modal="true" [@myAnimationTrigger]="state" class="modal" tabindex="-1"
+        style="display: block;">
+        <div aria-labelledby="contained-modal-title-vcenter" role="document"
+            class="modal-dialog modal-lg modal-dialog-centered">
+            <!-- [@myAnimationTrigger]="animation" -->
+            <div class="modal-content">
+                <div class="border-bottom-0 bg-primary text-white modal-header popup-header">
+                    <h5 class="modal-title">{{settings.title}}</h5><button (click)="exitPopup('close')" type="button"
+                        class="close text-white"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <ng-container *ngTemplateOutlet="template"></ng-container>
+                </div>
+                <!-- <div class="justify-content-center bg-light modal-footer"><button type="submit" form="sesion"
+                    class="btn btn-primary">LISTO</button></div> -->
+            </div>
+        </div>
+    </div>
+
+</div>

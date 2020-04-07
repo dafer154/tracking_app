@@ -1,0 +1,22 @@
+.popup {
+  &-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.26);
+    z-index: 1000;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  &-header {
+    background: linear-gradient(60deg, #222222, #4a6a86) !important;
+  }
+}
+
+.modal {
+  position: unset !important;
+  height: auto !important;
+}

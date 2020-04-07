@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as $ from "jquery";
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 // declare const $: any;
 declare interface RouteInfo {
@@ -11,13 +12,7 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
   { path: '/dashboard/main', title: 'Mis Servicios', icon: 'dashboard', class: '' },
-  { path: '/dashboard/user-profile', title: 'User Profile', icon: 'person', class: '' },
-  { path: '/dashboard/table-list', title: 'Table List', icon: 'content_paste', class: '' },
-  // { path: '/typography', title: 'Typography', icon: 'library_books', class: '' },
-  // { path: '/icons', title: 'Icons', icon: 'bubble_chart', class: '' },
-  // { path: '/maps', title: 'Maps', icon: 'location_on', class: '' },
-  // { path: '/notifications', title: 'Notifications', icon: 'notifications', class: '' },
-  // { path: '/upgrade', title: 'Upgrade to PRO', icon: 'unarchive', class: 'active-pro' },
+  { path: '/dashboard/users', title: 'Gestión De Usuarios', icon: 'person', class: '' },
 ];
 
 @Component({
@@ -28,10 +23,15 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponentDashboard implements OnInit {
   menuItems: any[];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private $authService: AuthService) { }
 
   ngOnInit() {
-    this.menuItems = ROUTES.filter(menuItem => menuItem);
+    if (this.$authService.isAdmin()) {
+      this.menuItems = ROUTES.filter(menuItem => menuItem);
+    } else {
+      this.menuItems = ROUTES.filter(menuItem => menuItem.icon != 'person');
+    }
+
   }
   isMobileMenu() {
     if ($(window).width() > 991) {

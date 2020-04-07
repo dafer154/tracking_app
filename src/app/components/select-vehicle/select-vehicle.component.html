@@ -8,13 +8,18 @@
                         <p>Elige una de las opciones</p>
                     </div>
                     <div class="col-12 col-sm-10 col-md-5">
-                        <div><img [src]="srcImage" alt="Camioneta Carry"></div>
+                        <div>
+                            <img [src]="srcImage" alt="Camioneta Carry" style="max-width: 100%; height: 120px;">
+                        </div>
                         <div class="mt-3">
-                            <p class="m-0 text-muted">{{vehicles[select_vehicle - 1]['weight']}}</p>
+                            <p class="m-0 text-muted">
+                                {{vehicles.length > 0 ? vehicles[select_vehicle - 1]['vehicles_size'] : ''}}
+                            </p>
                             <p class="font-size-22 font-weight-bold text-uppercase">
-                                {{vehicles[select_vehicle - 1]['name']}}</p>
-                        </div><input type="range" class="custom-range w-75" min="1" max="9" value="1"
-                            (input)="select_vehicle = $event.target.value;">
+                                {{vehicles.length > 0 ? vehicles[select_vehicle - 1]['vehicles_type_name'] : ''}}</p>
+                        </div><input type="range" class="custom-range w-75" min="1" max="{{vehicles.length}}"
+                            value="{{vehicles.length > 0 ? vehicles[select_vehicle - 1]['vehicles_id'] : 1}}"
+                            (input)="select_vehicle = $event.target.value;" [(ngModel)]="services.vehicles_id">
                         <hr>
                         <div class="d-flex justify-content-center mt-3"><button type="button"
                                 class="btn btn-primary py-2 px-5" (click)="selectSteps(2)">CONTINUAR</button></div>
@@ -35,44 +40,42 @@
                         <form [formGroup]="formDimensions" #myForm="ngForm">
                             <div class="d-flex form-group text-left mt-4">
                                 <div class="p-2 mx-2"><i class="fal fa-weight-hanging text-muted"></i></div><select
-                                    name="weight" id="serviceCategory" class="form-control" required="" disabled="">
+                                    name="weight" id="serviceCategory" class="form-control" disabled="">
                                     <option value="" disabled="">Seleccione el peso</option>
-                                    <option value="5" id="0">{{vehicles[select_vehicle - 1]['weight']}}</option>
-                                    <!-- <option value="5" id="0">100kg-850kg</option> -->
-                                    <!-- <option value="6" id="1">850kg-1500kg</option>
-                                    <option value="7" id="2">1500kg-2500kg</option>
-                                    <option value="8" id="3">2500kg-4500kg</option>
-                                    <option value="9" id="4">4500kg-8500kg</option>
-                                    <option value="10" id="5">8500kg-17000kg</option>
-                                    <option value="11" id="6">17000kg-20000kg</option>
-                                    <option value="12" id="7">20000kg-22000kg</option>
-                                    <option value="13" id="8">22000kg-32000kg</option>
-                                    <option value="14" id="9">32000kg-35000kg</option> -->
+                                    <option value="5" id="0" selected>{{vehicles[select_vehicle - 1]['vehicles_size']}}
+                                    </option>
                                 </select>
                             </div>
                             <div class="d-flex input-group text-left mt-4">
-                                <div class="p-2 mx-2 mr-3"><i class="fal fa-arrows-alt-v text-muted"></i></div><input
-                                    type="number" id="height" min="1" step="any" name="height"
-                                    class="form-control delete-input-arrow" placeholder="Alto" required="" value=""
-                                    formControlName="height">
+                                <div class="p-2 mx-2 mr-3"><i class="fal fa-arrows-alt-v text-muted"></i></div>
+                                <mat-form-field floatLabel="never" class="service-inputMaterial">
+                                    <input matInput id="height" min="1" step="any" name="height"
+                                        formControlName="height" type="number" placeholder="Alto"
+                                        [(ngModel)]="services.merchandise_height">
+                                    <mat-error>Campo obligatorio</mat-error>
+                                </mat-form-field>
                                 <div class="input-group-append"><span class="input-group-text">m³</span></div>
                             </div>
                             <div class="d-flex input-group text-left mt-4">
-                                <div class="p-2 mx-2"><i class="fal fa-arrows-alt-h text-muted"></i></div><input
-                                    type="number" id="width" min="1" step="any" name="width"
-                                    class="form-control delete-input-arrow" placeholder="Ancho" required="" value=""
-                                    formControlName="width">
+                                <div class="p-2 mx-2"><i class="fal fa-arrows-alt-h text-muted"></i></div>
+                                <mat-form-field floatLabel="never" class="service-inputMaterial">
+                                    <input matInput id="width" min="1" step="any" name="width" formControlName="width"
+                                        type="number" placeholder="Ancho" [(ngModel)]="services.merchandise_width">
+                                    <mat-error>Campo obligatorio</mat-error>
+                                </mat-form-field>
                                 <div class="input-group-append"><span class="input-group-text">m³</span></div>
                             </div>
                             <div class="d-flex input-group text-left mt-4">
-                                <div class="p-2 mx-2"><i class="fal fa-exchange-alt text-muted"></i></div><input
-                                    type="number" id="length" min="1" step="any" name="length"
-                                    class="form-control delete-input-arrow" placeholder="Largo" required="" value=""
-                                    formControlName="long">
+                                <div class="p-2 mx-2"><i class="fal fa-exchange-alt text-muted"></i></div>
+                                <mat-form-field floatLabel="never" class="service-inputMaterial">
+                                    <input matInput id="length" min="1" step="any" name="length" formControlName="long"
+                                        type="number" placeholder="Largo" [(ngModel)]="services.merchandise_long">
+                                    <mat-error>Campo obligatorio</mat-error>
+                                </mat-form-field>
                                 <div class="input-group-append"><span class="input-group-text">m³</span></div>
                             </div>
                             <hr>
-                            <div class="d-flex justify-content-center mt-3"><button type="button"
+                            <div class="d-flex justify-content-center mt-3"><button type="submit"
                                     class="btn btn-primary py-2 px-5" (click)="selectSteps(3)">CONTINUAR</button></div>
                         </form>
                     </div>
@@ -90,45 +93,46 @@
                             <p>Para encontrar la dirección exacta del servicio puedes mover el mapa, usar tu ubicación o
                                 escribir una dirección</p>
                         </div>
-                        <div>
+                        <div *ngFor="let controls of directions.controls; let i = index">
                             <div class="app-addresstask">
-                                <div class="app-addresstask-number text-center">1</div>
+                                <div class="app-addresstask-number text-center" [id]="'badge' + i"
+                                    (mouseenter)="searchBadgeAndPaint(i)" (mouseleave)="searchBadgeAndUnPaint(i)"
+                                    (click)="deleteAdress(i)">{{returnIdAdress(i)}}</div>
                                 <div><button type="button" class="app-addresstask-down"><i
-                                            class="fal fa-chevron-down"></i></button></div><input type="text"
-                                    class="app-addresstask-address" placeholder="Seleccionar Dirección" readonly=""
-                                    value=""><select id="0" class="app-addresstask-task" disabled="">
+                                            class="fal fa-chevron-down"></i></button>
+                                </div><input type="text" class="app-addresstask-address"
+                                    placeholder="Seleccionar Dirección" readonly=""
+                                    [formControl]="directions.controls[i]" (click)="openSelectAdress(i)"><select
+                                    [id]="i" class="app-addresstask-task" disabled="">
                                     <option value="" disabled="">Seleccione tipo de tarea</option>
-                                    <option value="" disabled="" selected>Tipo de tarea: Cargue</option>
-                                    <option value="" disabled="">Tipo de tarea: Descargue</option>
-                                    <option value="" disabled="">Tipo de tarea: Mixto</option>
+                                    <option value="" disabled="" [selected]="i == 0">Tipo de tarea: Cargue
+                                    </option>
+                                    <option value="" disabled="" [selected]="i != 0">Tipo de tarea:
+                                        Descargue
+                                    </option>
                                 </select>
                             </div>
-                            <div class="app-addresstask">
-                                <div class="app-addresstask-number text-center">2</div>
-                                <div><button type="button" class="app-addresstask-up"><i
-                                            class="fal fa-chevron-up"></i></button></div><input type="text"
-                                    class="app-addresstask-address" placeholder="Seleccionar Dirección" readonly=""
-                                    value=""><select id="1" class="app-addresstask-task" disabled="">
-                                    <option value="" disabled="">Seleccione tipo de tarea</option>
-                                    <option value="" disabled="">Tipo de tarea: Cargue</option>
-                                    <option value="" disabled="" selected>Tipo de tarea: Descargue</option>
-                                    <option value="" disabled="">Tipo de tarea: Mixto</option>
-                                </select>
-                            </div>
-                            <div class="text-right"><button class="btn btn-outline-primary  btn-sm px-4 m-2"
-                                    type="button">AGREGAR DIRECCIÓN</button></div>
+                            <div *ngIf="directions.controls.length == ( i + 1 ) && directions.controls.length < 20"
+                                class="text-right"><button class="btn btn-outline-primary  btn-sm px-4 m-2"
+                                    type="button" (click)="newControlAdress()">AGREGAR
+                                    DIRECCIÓN</button></div>
                             <hr>
-                        </div><button type="button" class="btn btn-primary" (click)="selectSteps(4)">Confirmar</button>
+                        </div>
+                        <button type="button" class="btn btn-primary" (click)="confirmAdress()">Confirmar</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="slide app-scrollbars" *ngIf="steps == 4">
+    <div class="slide app-scrollbars" [hidden]="!showMapPolylines">
         <div class="slide-box m-0 p-0">
             <div class="border-0 alert alert-warning font-size-14 m-0"><i class="fal fa-info-circle"></i> &nbsp;Verifica
                 tu ubicación. Ten en cuenta que la precisión de los dispositivos no siempre es exacta.</div>
-            <div id="MyMap" class="vh-90 rounded map-path" style="width: 100%; height: calc(100vh - 109px);"></div>
+            <div id="MyMap" class="vh-90 rounded map-path" style="width: 100%; height: calc(100vh - 124px);">
+                <app-google-maps [polylines]="services.merchandise_route" (statusDraw)="getStatusDraw($event)"
+                    [statusAddress]="activeRoutes" (dataRoute)="getDataRoute($event)">
+                </app-google-maps>
+            </div>
             <div class="container map-step">
                 <div class="row">
                     <div class="col text-center py-2"><button id="Schedule" type="button" class="btn btn-primary m-2"
@@ -141,32 +145,62 @@
         <div class="slide-box">
             <div class="container">
                 <div class="row justify-content-center">
-                    <form class="col-md-9 col-lg-8 col-xl-6"><span class="slide-title"><strong>Detalle</strong> de la
+                    <form class="col-md-9 col-lg-8 col-xl-6" [formGroup]="formMerchandiseDetail"><span
+                            class="slide-title"><strong>Detalle</strong> de la
                             mercancía</span><i class="slide-separator"></i>
                         <div class="col-12 text-muted mx-auto">
                             <p>Escribe detalles relevantes de la mercancía</p>
                         </div>
-                        <div class="text-left mb-3"><label for="data-0">Fecha de servicio</label><input type="hidden"
-                                id="data-0" data-key="0" class="app-datetime-date text-dark bg-white flatpickr-input"
-                                placeholder="Seleccione una fecha" required="" value=""><input
-                                class="app-datetime-date text-dark bg-white form-control input"
-                                placeholder="Seleccione una fecha" required="" tabindex="0" type="text"
-                                readonly="readonly"></div>
+                        <div class="text-left mb-3"><label for="data-0">Fecha de servicio</label>
+                            <mat-form-field floatLabel="never" class="service-inputMaterial-none">
+                                <input matInput [matDatepicker]="picker" [min]="currentDate" type="text"
+                                    formControlName="dateService" placeholder="Seleccione una fecha"
+                                    (click)="picker.open()" [(ngModel)]="services.merchandise_date">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                                <mat-error
+                                    *ngIf="formMerchandiseDetail.get('dateService').errors?.required && !formMerchandiseDetail.get('dateService').errors?.matDatepickerParse && formMerchandiseDetail.get('dateService').dirty">
+                                    Campo obligatorio</mat-error>
+                                <mat-error *ngIf="formMerchandiseDetail.get('dateService').errors?.matDatepickerParse">
+                                    Formato Invalido
+                                </mat-error>
+                                <mat-error
+                                    *ngIf="formMerchandiseDetail.get('dateService').value && formMerchandiseDetail.get('dateService').errors?.matDatepickerMin.min">
+                                    La fecha no puede estar en el pasado
+                                </mat-error>
+                            </mat-form-field>
+
+                        </div>
                         <div class="form-group text-left"><label for="">¿Cuál es el valor declarado de la
                                 mercancía?</label>
                             <div class="input-group">
                                 <div class="input-group-append"><span
-                                        class="input-group-text bg-light text-muted border-right-0 rounded-left px-3 position-relative"><i
-                                            class="fal fa-dollar-sign"></i></span></div><input name="declared_value"
-                                    type="text" class="form-control delete-input-arrow" placeholder="Ejemplo: 500.000"
-                                    maxlength="11" required="" value="">
+                                        class="input-group-text bg-white text-muted border-right-0 rounded-left px-3 position-relative"><i
+                                            class="fal fa-dollar-sign"></i></span></div>
+                                <mat-form-field floatLabel="never" class="service-inputMaterial">
+                                    <input matInput formControlName="valueService" type="text" step="any"
+                                        placeholder="Ejemplo: 500.000" [(ngModel)]="services.merchandise_value">
+                                    <mat-error
+                                        *ngIf="formMerchandiseDetail.controls['valueService'].errors?.required || formMerchandiseDetail.controls['valueService'].errors?.touched">
+                                        Campo obligatorio</mat-error>
+                                    <mat-error *ngIf="formMerchandiseDetail.controls['valueService'].errors?.pattern">
+                                        Campo solo
+                                        admite numeros
+                                    </mat-error>
+                                </mat-form-field>
                             </div>
                         </div>
                         <div class="text-left mt-3"><label for="description">Descripción de la
-                                mercancía</label><textarea type="text" name="description" class="form-control"
-                                maxlength="200" placeholder="Ejemplo: Mercancía de alto riesgo compuesta por..."
-                                id="description" rows="3" required=""></textarea></div>
-                        <hr><button class="btn btn-primary" type="submit" (click)="selectSteps(6)">Continuar</button>
+                                mercancía</label>
+                            <mat-form-field floatLabel="never" class="service-inputMaterial-none" appearance="outline">
+                                <textarea matInput mat-autosize rows="10" id="description" type="text"
+                                    placeholder="Ejemplo: Mercancía de alto riesgo compuesta por..."
+                                    formControlName="description"
+                                    [(ngModel)]="services.merchandise_description"></textarea>
+                                <mat-error>Campo obligatorio</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <hr><button class=" btn btn-primary" type="submit" (click)="selectSteps(6)">Continuar</button>
                     </form>
                 </div>
             </div>
@@ -176,7 +210,8 @@
         <div class="slide-box">
             <div class="container">
                 <div class="row justify-content-center">
-                    <form class="col-md-9 col-lg-8 col-xl-6"><span class="slide-title">¡<strong>Precio</strong> a
+                    <form class="col-md-9 col-lg-8 col-xl-6" [formGroup]="formPricePublish"><span
+                            class="slide-title">¡<strong>Precio</strong> a
                             publicar!</span><i class="slide-separator"></i>
                         <div class="col-12 col-sm-10 col-md-8 mx-auto"><i
                                 class="fal fa-money-bill-wave text-primary opacity-2 font-size-60"></i>
@@ -186,10 +221,20 @@
                         <div class="form-group text-left my-4">
                             <div class="input-group">
                                 <div class="input-group-append"><span
-                                        class="input-group-text bg-light text-muted border-right-0 rounded-left px-3 position-relative"><i
-                                            class="fal fa-dollar-sign"></i></span></div><input name="price" type="text"
-                                    class="form-control delete-input-arrow" placeholder="Ejemplo: 7.280.000"
-                                    maxlength="8" required="" value="">
+                                        class="input-group-text bg-white text-muted border-right-0 rounded-left px-3 position-relative"><i
+                                            class="fal fa-dollar-sign"></i></span></div>
+                                <mat-form-field floatLabel="never" class="service-inputMaterial">
+                                    <input matInput formControlName="price" type="text" name="price" maxlength="9"
+                                        placeholder="Ejemplo: 7.280.000" step="any"
+                                        [(ngModel)]="services.merchandise_price">
+                                    <mat-error
+                                        *ngIf="formPricePublish.controls['price'].errors?.required || formPricePublish.controls['price'].errors?.touched">
+                                        Campo obligatorio</mat-error>
+                                    <mat-error *ngIf="formPricePublish.controls['price'].errors?.pattern">
+                                        Campo solo
+                                        admite numeros
+                                    </mat-error>
+                                </mat-form-field>
                             </div>
                         </div>
                         <hr><button class="btn btn-primary" type="submit" (click)="selectSteps(7)">CONTINUAR</button>
@@ -198,7 +243,7 @@
             </div>
         </div>
     </div>
-    <div class="slide app-scrollbars pt-4 false" *ngIf="steps == 7 || steps == 8 && !$authService.isLogged()">
+    <div class="slide app-scrollbars pt-4 false" *ngIf="steps == 7 || steps == 8 && !success" [hidden]="success">
         <div class="slide-box">
             <div class="container">
                 <div class="row justify-content-center">
@@ -206,24 +251,34 @@
                                 servicio</strong></span><i class="slide-separator"></i>
                         <div class="d-flex mb-4">
                             <div class="w-100"><i class="fal fa-calculator text-primary font-size-36"></i><br><span
-                                    class="opacity-4">Precio:</span><br><span>$</span></div>
+                                    class="opacity-4">Precio:</span><br><span>${{services.merchandise_price}}</span>
+                            </div>
                             <div class="w-100"><i class="fal fa-truck-moving text-primary font-size-36"></i><br><span
-                                    class="opacity-4">Vehículo:</span><br><span>Camioneta Carry</span></div>
+                                    class="opacity-4">Vehículo:</span><br><span>{{vehicles[select_vehicle -
+                                    1]['vehicles_type_name']}}</span></div>
                             <div class="w-100"><i class="fal fa-road text-primary font-size-36"></i><br><span
-                                    class="opacity-4">Distancia:</span><br><span>0 km</span></div>
+                                    class="opacity-4">Distancia:</span><br><span>{{services.merchandise_distance}}
+                                    km</span></div>
                         </div>
                         <div class="list-group list-group-flush text-left">
                             <div class="list-group-item"><span class="opacity-4 mr-1">Tipo de
                                     servicio:</span><span>Carga nacional</span></div>
-                            <div class="list-group-item"><span class="opacity-4 mr-1">Peso:</span>100kg-850kg</div>
-                            <div class="list-group-item"><span class="opacity-4 mr-1">Dimensiones:</span><span> x x
-                                    (Alto, Ancho, Largo)</span></div>
-                            <div class="list-group-item"><span class="opacity-4 mr-1">Fecha de servicio:</span></div>
-                            <div class="list-group-item"><span class="opacity-4">Direcciones: </span><span>2</span><i
+                            <div class="list-group-item"><span
+                                    class="opacity-4 mr-1">Peso:</span>{{vehicles[select_vehicle - 1]['vehicles_size']}}
+                            </div>
+                            <div class="list-group-item"><span class="opacity-4 mr-1">Dimensiones:</span><span> Alto
+                                    Ancho Largo
+                                    ({{services.merchandise_height}}, {{services.merchandise_width}},
+                                    {{services.merchandise_long}})</span></div>
+                            <div class="list-group-item"><span class="opacity-4 mr-1">Fecha de servicio:</span>
+                                {{services.merchandise_date | date: 'dd/MM/yyyy'}}</div>
+                            <div class="list-group-item"><span class="opacity-4">Direcciones:
+                                </span><span>{{services.merchandise_route.length}}</span><i
                                     class="fal fa-map-marked float-right opacity-3"></i>
                                 <ul class="font-size-14 opacity-4 py-2 list-unstyled">
-                                    <li><span class="badge badge-pill badge-primary mr-1">1</span> </li>
-                                    <li><span class="badge badge-pill badge-primary mr-1">2</span> </li>
+                                    <li *ngFor="let route of $localStorage.getRoutes(); let i = index"><span
+                                            class="badge badge-pill badge-primary mr-1">{{returnIdAdress(i)}}</span>
+                                        {{route}}</li>
                                 </ul>
                             </div>
                         </div>
@@ -238,18 +293,19 @@
             </div>
         </div>
     </div>
-    <div class="slide app-scrollbars" *ngIf="steps == 8 && $authService.isLogged()">
+    <div class="slide app-scrollbars" *ngIf="steps == 8 && $authService.isLogged() && success">
         <div class="slide-box">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-11 col-lg-10 col-xl-8"><i
                             class="fal fa-check text-success font-size-56"></i><br><br>
                         <p class="text-success">¡Muy bien, la solicitud ha sido enviada con éxito!</p>
-                        <p class="text-info">¡Gracias por confiar tu logística en Quick!</p><i
+                        <p class="text-info">¡Gracias por confiar tu logística en RF Logistics Beside You!</p><i
                             class="quickapp-slide-separator"></i>
                         <p class="text-muted">¿Qué deseas hacer ahora?</p><br><a (click)="requestNewService()"
-                            class="btn btn-primary cursor-pointer w-100 text-white">SOLICITAR OTRO SERVICIO</a><br><button
-                            type="button" class="btn btn-primary mb-3 mt-3 w-100 d-none">COMPARTIR ESTA APP</button><br>
+                            class="btn btn-primary cursor-pointer w-100 text-white">SOLICITAR OTRO
+                            SERVICIO</a><br><button type="button"
+                            class="btn btn-primary mb-3 mt-3 w-100 d-none">COMPARTIR ESTA APP</button><br>
                         <div class="row mx-auto text-center">
                             <div class="col-12 col-sm-6 pl-0 pr-1"><a routerLink="/dashboard/main"
                                     class="btn btn-primary cursor-pointer w-100 mb-3 mb-sm-0">IR A MI CUENTA</a></div>
@@ -261,4 +317,44 @@
             </div>
         </div>
     </div>
+    <div class="progress-request" *ngIf="progress" [@myAnimationTrigger]="progress">
+        <mat-spinner [diameter]="40" [strokeWidth]="3"></mat-spinner>
+    </div>
 </div>
+
+
+<!-- maps directions -->
+<app-popup *ngIf="selectAdress" [settings]="popupSettings" (exit)="closeSelectAdresss($event)">
+    <ng-template>
+        <div class="slide app-scrollbars">
+            <div class="slide-box m-0 p-0">
+                <div class="map-input">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Busca el lugar</mat-label>
+                        <input matInput placeholder="Buscar..." #mapInput>
+                        <mat-icon matSuffix>location_on</mat-icon>
+                        <mat-hint>ubicación</mat-hint>
+                    </mat-form-field>
+                </div>
+                <div id="MyMap" class="vh-90 rounded map-path" style="width: 100%; height: calc(100vh - 124px);">
+                    <app-google-maps #mapAdress [inputDirections]="mapInput ? mapInput : null" adressType="geocode"
+                        (places)="getAddress($event)" (placesAdress)="getPlacesAdress($event)">
+                    </app-google-maps>
+                </div>
+                <img class="map-marker" src="assets/img/spotlight-poi2.png" alt="marker">
+                <div class="gps_fixed_button">
+                    <button mat-mini-fab color="" (click)="recalculateUbication()">
+                        <mat-icon>gps_fixed</mat-icon>
+                    </button>
+                </div>
+                <div class="container map-step">
+                    <div class="row">
+                        <div class="col text-center py-2"><button id="Schedule" type="button"
+                                class="btn btn-primary m-2" (click)="exitPopup()">CONTINUAR</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</app-popup>
+<!-- // -->

@@ -1,0 +1,132 @@
+<div class="container-fluid main-container">
+    <div class="row">
+        <div class="col pt-3">
+            <!-- <div class="page-title">
+                <h1>Servicios</h1>
+            </div> -->
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/dashboard/main">Inicio</a></li>
+                    <li class="breadcrumb-item active">Usuarios</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="app-panel">
+                <div class="container-fluid px-0">
+                    <div class="row" *ngIf="users.length > 0">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-primary services-card-header">
+                                    <h4 class="card-title ">Gestión De Usuarios</h4>
+                                    <p class="card-category">Aqui esta el listado todos de los usuarios del app</p>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class=" text-primary">
+                                                <th>
+                                                    ID
+                                                </th>
+                                                <th>
+                                                    Nombres
+                                                </th>
+                                                <th>
+                                                    Apellidos
+                                                </th>
+                                                <th>
+                                                    Correo
+                                                </th>
+                                                <th>
+                                                    Telefono
+                                                </th>
+                                                <th>
+                                                    Constraseña
+                                                </th>
+                                                <th>
+                                                    Identificación
+                                                </th>
+                                                <th>
+                                                    Dirección
+                                                </th>
+                                                <th>
+                                                    Tipo/Identificación
+                                                </th>
+                                                <th>
+                                                    Rol
+                                                </th>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let user of users">
+                                                    <td>
+                                                        {{user.id}}
+                                                    </td>
+                                                    <td>
+                                                        {{user.name}}
+                                                    </td>
+                                                    <td>
+                                                        {{user.last_name}}
+                                                    </td>
+                                                    <td>
+                                                        {{subStringCustom(user.email, 15)}}
+                                                    </td>
+                                                    <td>
+                                                        {{user.phone_number}}
+                                                    </td>
+                                                    <td>
+                                                        {{user.password}}
+                                                    </td>
+                                                    <td>
+                                                        {{user.nit}}
+                                                    </td>
+                                                    <td>
+                                                        {{user.address}}
+                                                    </td>
+                                                    <td>
+                                                        {{user.type_document}}
+                                                    </td>
+                                                    <td class="text-primary">
+                                                        {{user.role_id}}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NO RESULTS -->
+                <div class="row" *ngIf="users.length == 0">
+                    <div class="col">
+                        <div class="tab-content">
+                            <div id="tab-services-tabpane-actives" aria-labelledby="tab-services-tab-actives"
+                                role="tabpanel" aria-hidden="false" class="fade tab-pane active show">
+                                <div id="tab-actives" class="tab-pane show active">
+                                    <div class="col-md-12 text-center">
+                                        <div class="row">
+                                            <div class="col-12 ">
+                                                <article class="app-panel app-panel-empty"><img
+                                                        src="assets/img/no_results.png"
+                                                        width="380"><br>
+                                                    <p class="app-panel-empty-message text-center">No hay usuarios
+                                                        en esta sección...</p>
+                                                </article>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- NO RESULTS -->
+
+            </div>
+        </div>
+    </div>
+</div>

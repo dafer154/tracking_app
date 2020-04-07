@@ -29,6 +29,7 @@ export class LoginService {
     return this.http.post(Login.LOGOUT, { id_user: this.getUserId() }, HttpOptions).pipe(
       map((res) => {
         this.$localStorage.setStatusLogut(true);
+        this.$localStorage.setBroadcastLogout(true);
         return res;
       }, (err) => {
         return err;

@@ -1,24 +1,27 @@
-<app-navbar></app-navbar>
+<app-navbar (statusLogin)="getStatusLogin($event)"></app-navbar>
 <app-main-banner></app-main-banner>
 <app-select-transport></app-select-transport>
 <app-carousel-slider></app-carousel-slider>
 <div class="banner-contact">
-    <h1 class="banner-contact-title">¿Estás listo?</h1>
-    <p class="banner-contact-text">
+    <h1 class="banner-contact-title text-light">¿Quiénes Somos?</h1>
+    <p class="banner-contact-text text-white">
         Expertos en logística estaremos listos para brindarte una asesoría personalizada y solucionar todos tus
         requerimientos.
     </p>
     <a class="banner-btn banner-btn-dark banner-btn-lg banner-rounded-pill" href="#">CONTÁCTANOS</a>
 </div>
 <div class="banner-joinus">
-    <img class="banner-img-fluid" src="https://assets.quick.com.co/images/pictures/join_up.jpg" alt="únete">
+    <img class="banner-img-fluid" src="https://www.gmv.com/blog_gmv/wp-content/uploads/tracking-3566710_640.jpg"
+        alt="únete">
     <div class="banner-joinus-content">
-        <h1 class="banner-joinus-title">SÉ UN TRACKING APP</h1>
+        <h1 class="banner-joinus-title">TRACKING EN TIEMPO REAL</h1>
         <p class="banner-joinus-text">Únete y ayúdanos a transformar la logística en Latinoamérica, haciéndola fácil y
             eficiente.</p>
     </div>
     <div>
-        <a class="banner-btn banner-btn-dark banner-btn-lg banner-rounded-pill" href="#">SÉ PARTE DE NUESTRO TEAM</a>
+        <a class="banner-btn banner-btn-dark banner-btn-lg banner-rounded-pill" href="#">CONÉCTATE AHORA</a>
     </div>
 </div>
 <app-footer></app-footer>
+<app-login *ngIf="login" [animation]="login ? '1' : '*'" (closeLogin)="closeLogin($event)">
+</app-login>

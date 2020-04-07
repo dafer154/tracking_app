@@ -7,10 +7,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatInputModule } from '@angular/material/input';
-import { MatRippleModule } from '@angular/material/core';
+import { MatRippleModule, MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { MatSelectModule } from '@angular/material/select';
   exports: [
     DragDropModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
@@ -28,6 +30,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,
     MatTooltipModule,
     MatSelectModule,
+    MatProgressSpinnerModule,
   ], providers: [
     MatDatepickerModule
   ]

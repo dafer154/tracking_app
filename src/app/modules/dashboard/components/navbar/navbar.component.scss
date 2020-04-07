@@ -1,0 +1,14 @@
+.service-inputMaterial {
+  position: relative;
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+  width: 1%;
+  margin-bottom: 0;
+  &-none {
+    width: 100% !important;
+  }
+}
+
+.navbar {
+  z-index: 900 !important;
+}
